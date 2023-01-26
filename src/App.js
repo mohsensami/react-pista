@@ -1,11 +1,14 @@
-
-import './App.css';
-import Expenses from './components/Expenses';
+import "./App.css";
+import Expenses from "./components/Expenses";
+import NewExpense from "./components/NewExpense/newExpense";
 
 function App() {
-  return (
-    <Expenses />
-  );
+    return (
+        <>
+            <NewExpense />
+            <Expenses />
+        </>
+    );
 }
 
 export default App;
