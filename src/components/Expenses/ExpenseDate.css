@@ -9,20 +9,18 @@
     border-radius: 12px;
     align-items: center;
     justify-content: center;
-}
-
-.expense-date__month {
+  }
+  
+  .expense-date__month {
     font-size: 0.75rem;
     font-weight: bold;
-    margin-bottom: 5px;
-}
-.expense-date__year {
+  }
+  
+  .expense-date__year {
     font-size: 0.75rem;
-    margin-bottom: 5px;
-}
-.expense-date__day {
+  }
+  
+  .expense-date__day {
     font-size: 1.5rem;
     font-weight: bold;
-}
-
-
+  }
