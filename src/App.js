@@ -23,14 +23,20 @@ const DUMMY_EXPENSES = [
         amount: 450,
         date: new Date(2021, 5, 12),
     },
+    {
+        id: "e5",
+        title: "Pen (Wooden)",
+        amount: 350,
+        date: new Date(2022, 1, 12),
+    },
 ];
 
 const App = () => {
     const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
     const addExpenseHandler = (expense) => {
-        setExpenses((prev) => {
-            return [expense, ...prev];
+        setExpenses((prevExpenses) => {
+            return [expense, ...prevExpenses];
         });
     };
 
