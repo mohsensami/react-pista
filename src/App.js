@@ -1,38 +1,57 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from 'react';
 
-import Login from "./components/Login/Login";
-import Home from "./components/Home/Home";
-import MainHeader from "./components/MainHeader/MainHeader";
+import CourseGoalList from './components/CourseGoals/CourseGoalList/CourseGoalList';
+import CourseInput from './components/CourseGoals/CourseInput/CourseInput';
+import './App.css';
 
-function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+const App = () => {
+  const [courseGoals, setCourseGoals] = useState([
+    { text: 'Do all exercises!', id: 'g1' },
+    { text: 'Finish the course!', id: 'g2' }
+  ]);
 
-    useEffect(() => {
-        const loginStatus = localStorage.getItem("isLoggedIn");
-        if (loginStatus) {
-            setIsLoggedIn(true);
-        }
-    }, []);
+  const addGoalHandler = enteredText => {
+    setCourseGoals(prevGoals => {
+      const updatedGoals = [...prevGoals];
+      updatedGoals.unshift({ text: enteredText, id: Math.random().toString() });
+      return updatedGoals;
+    });
+  };
 
-    const loginHandler = (email, password) => {
-        localStorage.setItem("isLoggedIn", "1");
-        setIsLoggedIn(true);
-    };
+  const deleteItemHandler = goalId => {
+    setCourseGoals(prevGoals => {
+      const updatedGoals = prevGoals.filter(goal => goal.id !== goalId);
+      return updatedGoals;
+    });
+  };
 
-    const logoutHandler = () => {
-        localStorage.removeItem("isLoggedIn");
-        setIsLoggedIn(false);
-    };
+  let content = (
+    <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
+  );
 
-    return (
-        <React.Fragment>
-            <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
-            <main>
-                {!isLoggedIn && <Login onLogin={loginHandler} />}
-                {isLoggedIn && <Home onLogout={logoutHandler} />}
-            </main>
-        </React.Fragment>
+  if (courseGoals.length > 0) {
+    content = (
+      <CourseGoalList items={courseGoals} onDeleteItem={deleteItemHandler} />
     );
-}
+  }
+
+  return (
+    <div>
+      <section id="goal-form">
+        <CourseInput onAddGoal={addGoalHandler} />
+      </section>
+      <section id="goals">
+        {content}
+        {/* {courseGoals.length > 0 && (
+          <CourseGoalList
+            items={courseGoals}
+            onDeleteItem={deleteItemHandler}
+          />
+        ) // <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
+        } */}
+      </section>
+    </div>
+  );
+};
 
 export default App;
