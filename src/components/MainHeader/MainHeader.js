@@ -6,8 +6,8 @@ import classes from "./MainHeader.module.css";
 const MainHeader = (props) => {
     return (
         <header className={classes["main-header"]}>
-            <h1>Pista Academy</h1>
-            <Navigation onLogout={props.onLogout} />
+            <h1>React App</h1>
+            <Navigation />
         </header>
     );
 };
