@@ -3,7 +3,7 @@
     font: inherit;
     border: none;
     background-color: #051367;
-    color: #ECECEC;
+    color: #ececec;
     padding: 0.75rem 3rem;
     display: flex;
     justify-content: space-around;
@@ -12,8 +12,9 @@
     font-weight: bold;
 }
 
-.button:hover, .button:active {
-    background-color: #FF1818;
+.button:hover,
+.button:active {
+    background-color: #ff1818;
 }
 
 .icon {
@@ -30,7 +31,29 @@
     font-weight: bold;
 }
 
-.button:hover .badge, .button:active .badge{
+.button:hover .badge,
+.button:active .badge {
     background-color: #2c3333;
 }
 
+.bump {
+    animation: bump 300ms ease-out;
+}
+
+@keyframes bump {
+    0% {
+        transform: scale(1);
+    }
+    10% {
+        transform: scale(0.9);
+    }
+    30% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

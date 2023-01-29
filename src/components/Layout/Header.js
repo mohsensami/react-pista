@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import mealsImage from "../../assets/meals.jpg";
-import HeaderCartButton from "./HeaderCartButton";
-import classes from "./Header.module.css";
+import mealsImage from '../../assets/meals.jpg';
+import HeaderCartButton from './HeaderCartButton';
+import classes from './Header.module.css';
 
 const Header = (props) => {
     return (
@@ -11,11 +11,11 @@ const Header = (props) => {
                 <h1>Pista Foods</h1>
                 <HeaderCartButton onClick={props.onShowCart} />
             </header>
-            <div className={classes["main-image"]}>
+            <div className={classes['main-image']}>
                 <img src={mealsImage} alt="A table full of Foods!" />
             </div>
         </React.Fragment>
-    );
-};
+    )
+}
 
 export default Header;
