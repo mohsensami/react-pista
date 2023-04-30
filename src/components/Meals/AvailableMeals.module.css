@@ -1,5 +1,5 @@
 .meals {
-    max-width: 60rem;
+    /* max-width: 60rem; */
     width: 90%;
     margin: 2rem auto;
     animation: meals-appear 1s ease-out forwards;
@@ -9,6 +9,11 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    display: grid;
+    /* grid-template-columns: repeat(4, 1fr); */
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
 }
 
 @keyframes meals-appear {
