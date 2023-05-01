@@ -21,7 +21,7 @@ const MealItem = (props) => {
             <div>
                 <h3>{props.name}</h3>
                 <div>
-                    <img src={props.image} />
+                    <img src={props.image} alt={props.title} width="200" />
                 </div>
                 <div className={classes.description}>{props.description}</div>
                 <div className={classes.price}>{price}</div>

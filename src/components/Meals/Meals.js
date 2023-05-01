@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 
 // import MealsSummary from './MealsSummary';
 import AvailableMeals from './AvailableMeals';
