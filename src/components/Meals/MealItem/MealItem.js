@@ -1,10 +1,12 @@
 import classes from './MealItem.module.css';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import MealItemForm from './MealItemForm';
 import CartContext from './../../../store/cart-context';
+import Modal from '../../UI/Modal';
 
 const MealItem = (props) => {
     const cartCtx = useContext(CartContext);
+    const [showModal, setShowModal] = useState(false);
 
     const price = `$${props.price.toFixed(2)}`;
 
@@ -16,10 +18,21 @@ const MealItem = (props) => {
             price: props.price,
         });
     };
+    const modalHandler = (id) => {
+        console.log(id);
+        return setShowModal((prev) => !prev);
+    };
     return (
         <li className={classes.meal}>
             <div>
-                <h3>{props.name}</h3>
+                <h3 onClick={() => modalHandler(props.id)}>{props.name}</h3>
+                {showModal && (
+                    <Modal>
+                        <div className={classes.actions}>
+                            <button onClick={() => setShowModal(false)}>Close</button>
+                        </div>
+                    </Modal>
+                )}
                 <div>
                     <img src={props.image} alt={props.title} width="200" />
                 </div>
