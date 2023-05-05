@@ -7,6 +7,7 @@ import Modal from '../../UI/Modal';
 const MealItem = (props) => {
     const cartCtx = useContext(CartContext);
     const [showModal, setShowModal] = useState(false);
+    const [product, setProduct] = useState({});
 
     const price = `$${props.price.toFixed(2)}`;
 
@@ -18,8 +19,10 @@ const MealItem = (props) => {
             price: props.price,
         });
     };
-    const modalHandler = (id) => {
-        console.log(id);
+    const modalHandler = async (id) => {
+        const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+        const data = await response.json();
+        setProduct(data);
         return setShowModal((prev) => !prev);
     };
     return (
@@ -28,7 +31,14 @@ const MealItem = (props) => {
                 <h3 onClick={() => modalHandler(props.id)}>{props.name}</h3>
                 {showModal && (
                     <Modal>
-                        <div className={classes.actions}>
+                        <div>
+                            <h3>{product.title}</h3>
+                            <div>
+                                <img width="300" src={product.image} alt={product.title} />
+                            </div>
+                        </div>
+                        <div>
+                            {product.title}
                             <button onClick={() => setShowModal(false)}>Close</button>
                         </div>
                     </Modal>
